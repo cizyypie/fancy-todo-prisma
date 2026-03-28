@@ -1,39 +1,10 @@
-require("dotenv").config();
-const app = require("./app");
-const prisma = require("./prisma/client");
+import app from "./app.js"; 
 
-let server;
-const port = 3000;
+import dotenv from "dotenv";
 
-if (prisma) {
-  console.log("Connected to Database");
-  server = app.listen(port, () => {
-    console.log(`Listening to port ${port}`);
-  });
-}
+dotenv.config();
+const PORT = process.env.PORT || 3000;
 
-const exitHandler = () => {
-  if (server) {
-    server.close(() => {
-      console.log("Server closed");
-      process.exit(1);
-    });
-  } else {
-    process.exit(1);
-  }
-};
-
-const unexpectedErrorHandler = (error) => {
-  console.log(error);
-  exitHandler();
-};
-
-process.on("uncaughtException", unexpectedErrorHandler);
-process.on("unhandledRejection", unexpectedErrorHandler);
-
-process.on("SIGTERM", () => {
-  console.log("SIGTERM received");
-  if (server) {
-    server.close();
-  }
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`)
 });
