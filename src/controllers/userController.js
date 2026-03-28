@@ -1,5 +1,5 @@
 import * as userService from "../services/userService.js";
-console.log("LOG:", userService);
+
 export const getAllUsers = async (req, res) => {
   try {
     const user = await userService.getAllUsers();
