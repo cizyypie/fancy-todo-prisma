@@ -6,8 +6,8 @@ export const getAllUsers = async () => {
 
 export const getUserById = async (id) => {
   return await prisma.user.findUnique({
-    where: { id: Number(id) },
-    include: { todos: true },
+    where: { id },
+    include: { todos: true }, //note: include-> singkatnya buat JOIN operation
   });
 };
 
@@ -19,6 +19,6 @@ export const createUser = async (data) => {
 
 export const deleteUser = async (id) => {
   return await prisma.user.delete({
-    where: { id: Number(id) },
+    where: { id },
   });
 };
