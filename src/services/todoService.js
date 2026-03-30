@@ -4,9 +4,10 @@ export const getAllTodo = async () => {
   return await prisma.todo.findMany();
 };
 
-export const getTodoById = async (id) => {
+export const getTodoById = async (id, user) => {
   return await prisma.todo.findUnique({
     where: { id },
+    include: { user: true }
   });
 };
 
