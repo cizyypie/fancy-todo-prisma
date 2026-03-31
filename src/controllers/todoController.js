@@ -1,6 +1,6 @@
 import * as todoService from "../services/todoService.js";
 import { createTodoSchema, updateTodoSchema } from "../validations/todoValidation.js";
-import { handleError } from "../utils/errorHandler.js";
+import { handleError } from "../../utils/errorHandler.js";
 
 export const getAllTodo = async (req, res) => {
   try {

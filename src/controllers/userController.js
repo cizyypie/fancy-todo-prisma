@@ -1,6 +1,6 @@
 import * as userService from "../services/userService.js";
 import { createUserSchema, updateUserSchema } from "../validations/userValidation.js";
-import { handleError } from "../utils/errorHandler.js";
+import { handleError } from "../../utils/errorHandler.js";
 
 export const createUser = async (req, res) => {
   try {
