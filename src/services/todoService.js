@@ -6,8 +6,13 @@ export const getAllTodo = async () => {
 
 export const getTodoById = async (id, user) => {
   return await prisma.todo.findUnique({
-    where: { id },
-    include: { user: true }
+    where: { 
+      id: id,
+      userId: userId 
+    },
+    include: { 
+      user: true 
+    },
   });
 };
 
